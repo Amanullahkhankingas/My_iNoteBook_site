@@ -10,7 +10,9 @@ router.get('/' , (req, res) =>{
 
     // res.json(obj)
 
-    res.json([])
+    // res.json([])
+
+    
 });
 
 module.exports = router

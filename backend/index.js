@@ -18,6 +18,9 @@ app.use(express.json());  // middle wayer
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/notes', require('./routes/notes'))
 
+// let userData = User.findOne({"name":"killer3"})
+//     res.json(userData)
+
 
 app.listen(port, ()=>{
     console.log(`Example app listening at http:localhost:${port}`)
