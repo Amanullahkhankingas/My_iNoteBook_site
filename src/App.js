@@ -9,6 +9,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import NoteState from './components/context/notes/NoteState';
 
 function App() {
   return (
@@ -16,19 +17,10 @@ function App() {
          {/* <h1>this is h1</h1> */}
 
 
-         
+         <NoteState>
          
          
 
-         {/* <BrowserRouter>
-    <Routes>
-      
-      <Route exact path="/about" ><Home/>
-      <Route exact path="/about" ><Navbar/>
-      <Route exact path="/about" ><About/>
-      
-    </Routes>
-  </BrowserRouter> */}
          <BrowserRouter>
           <Navbar />
     <Routes>
@@ -37,6 +29,7 @@ function App() {
       
     </Routes>
   </BrowserRouter>
+  </NoteState>
     </div>
   );
 }
