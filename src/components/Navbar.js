@@ -1,15 +1,15 @@
 import React from 'react'
 import {Link,useLocation} from "react-router-dom";
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
 
 
 const Navbar = () => {
   let Location = useLocation();
 
-  useEffect(()=>{
-    console.log(Location.pathname)
-  },[Location])
+  // useEffect(()=>{
+  //   console.log(Location.pathname)
+  // },[Location])
 
   return (
     <div>

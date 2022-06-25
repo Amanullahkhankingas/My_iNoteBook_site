@@ -26,7 +26,34 @@ const NoteState = (props) => {
       "tag": "javad is my classmate",
       "date": "2022-06-24T12:41:15.097Z",
       "__v": 0
-    }
+    },
+    {
+      "_id": "62b5b0eb21fc54526ee3ea4a95",
+      "user": "62b55c82d6e8fd8eca58cc30",
+      "title": "javad vala",
+      "description": "javad kay private notes hay ya",
+      "tag": "javad is my classmate",
+      "date": "2022-06-24T12:41:15.097Z",
+      "__v": 0
+    },
+    {
+      "_id": "62b5b0eb4334fc54526ee3ea4a95",
+      "user": "62b55c82d6e8fd8eca58cc30",
+      "title": "javad vala",
+      "description": "javad kay private notes hay ya",
+      "tag": "javad is my classmate",
+      "date": "2022-06-24T12:41:15.097Z",
+      "__v": 0
+    },
+    {
+      "_id": "62b5b0ebfc345354526ee3ea4a95",
+      "user": "62b55c82d6e8fd8eca58cc30",
+      "title": "javad vala",
+      "description": "javad kay private notes hay ya",
+      "tag": "javad is my classmate",
+      "date": "2022-06-24T12:41:15.097Z",
+      "__v": 0
+    },
   ];
   const [notes, setNotes]= useState(notesinitial);
 
@@ -48,6 +75,7 @@ const NoteState = (props) => {
 
     const addNote = (title,description,tag)=>{
       const userAddNote = {
+        // To Do API Call 
         "_id": "88b5b0ebfc54526ee3ea4a95",
         "user": "62b55c82d6e8fd8eca58cc30",
         "title": title,
@@ -60,11 +88,19 @@ const NoteState = (props) => {
       setNotes(notes.concat(userAddNote))
 
     }
+
+    const deleteNote=(id)=>{
+
+      // console.log("ths id of the delete note is " + id)
+     const newNote= notes.filter((note)=>{return note._id !== id})
+      setNotes(newNote)
+
+    }
   return (
     <div>
       
       {/* <noteContext.Provider value={{state, update_the_state}} > */}
-      <noteContext.Provider value={{notes,addNote}} >
+      <noteContext.Provider value={{notes,addNote,deleteNote}} >
         {props.children}
       </noteContext.Provider>
     </div>
