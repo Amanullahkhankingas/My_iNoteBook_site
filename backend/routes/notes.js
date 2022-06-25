@@ -62,6 +62,8 @@ router.post('/createNotes', [
 router.put('/updatenotes/:id', fetchuserid, async (req, res) => {
 
     const { title, description, tag } = req.body;
+    
+    try {
     //Create a new newNote object
     let newNote = {};
     if (title) { newNote.title = title };
@@ -81,6 +83,13 @@ router.put('/updatenotes/:id', fetchuserid, async (req, res) => {
     note = await Notes.findByIdAndUpdate(req.params.id, { $set: newNote }, { new: true });
     res.json({ note });
 
+} catch (error) {
+
+    console.error(error.message)
+    res.status(500).send("internal error accur ")
+
+}
+
 });
 
 
@@ -89,6 +98,7 @@ router.delete('/deletenotes/:id', fetchuserid, async (req, res) => {
 
    
 
+    try {
     //Find the note to be delete and delete it
     let note = await Notes.findById(req.params.id);
     if (!note) {
@@ -103,6 +113,15 @@ router.delete('/deletenotes/:id', fetchuserid, async (req, res) => {
     note = await Notes.findByIdAndDelete(req.params.id);
     res.json({"sucess":"the file has been deleted sucessfully" ,note : note});
 
+} catch (error) {
+
+    console.error(error.message)
+    res.status(500).send("internal error accur ")
+
+}
+
 });
+
+
 
 module.exports = router
