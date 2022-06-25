@@ -10,28 +10,30 @@ import {
   Route,
 } from "react-router-dom";
 import NoteState from './components/context/notes/NoteState';
+import Alert from './components/Alert';
 
 function App() {
   return (
     <div className="App">
-         {/* <h1>this is h1</h1> */}
+      {/* <h1>this is h1</h1> */}
 
 
-         <NoteState>
-         
-         
+      <NoteState>
 
-         <BrowserRouter>
+
+
+        <BrowserRouter>
           <Navbar />
+          <Alert message={"this is the alert message"}/>
           <div className='container'>
-    <Routes>
-      <Route path="/" element={<Home />}/>
-      <Route path="/about" element={<About />}/>
-      
-    </Routes>
-    </div>
-  </BrowserRouter>
-  </NoteState>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+
+            </Routes>
+          </div>
+        </BrowserRouter>
+      </NoteState>
     </div>
   );
 }

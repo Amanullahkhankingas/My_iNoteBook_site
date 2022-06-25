@@ -14,17 +14,17 @@ const Home = () => {
         <h1>Add a Notes</h1>
         <form className='my-4'>
           <div className='mb-3'>
-            <label for="exampleInputEmail1" className='form-label'>Email address</label>
+            <label htmlFor="exampleInputEmail1" className='form-label'>Email address</label>
             <input type="email" className='form-control' id='exampleInputEmail1' aria-describedby='emailHelp' />
             <div id='emailHelp' className='form-text'>We'll never share your email with anyone else</div>
           </div>
           <div className='mb-3'>
-            <label for="exampleInputPassword1" className='form-label'>Password</label>
+            <label htmlFor="exampleInputPassword1" className='form-label'>Password</label>
             <input type="password" className='form-control' id='exampleInputpassword1' />
           </div>
           <div className='mb-3 form-check'>
             <input type="checkbox" className='form-check-input' id='examplecheck1' />
-            <label for="examplecheck1" className='form-check-label'>Check me out</label>
+            <label htmlFor="examplecheck1" className='form-check-label'>Check me out</label>
           </div>
           <button type='submit' className='btn btn-primary'>Submit</button>
         </form>
