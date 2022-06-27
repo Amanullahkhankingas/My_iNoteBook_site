@@ -20,7 +20,7 @@ const Addnote = () => {
     }
     
     const handleclick=(e)=>{
-      e.preventDefault();
+      // e.preventDefault();
             addNote(userInputNote.title,userInputNote.description,userInputNote.tag)
             // addNote(userInputNote.tag,userInputNote.title)
     };
@@ -44,7 +44,7 @@ const Addnote = () => {
             <input type="text" className='form-control' id='tag' name='tag' onChange={handlechange} />
           </div>
          
-          <button type='submit' className='btn btn-primary' onClick={handleclick}>Submit</button>
+          <button type='submit' className='btn btn-primary' onClick={handleclick}>Add Note</button>
         </form>
       </div>
     </div>
