@@ -101,9 +101,12 @@ router.post('/login', [
     body('password', 'Password must be atleast 5 charactor').isLength({ min: 5 })],
     async (req, res) => {
 
+        let success = false;
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
+            success=false;
+
+            return res.status(400).json({ success ,false: "success false enter the valid email and minLength 5 password",errors: errors.array() });
         }
 
         const { password, email } = req.body;
@@ -117,13 +120,15 @@ router.post('/login', [
             // console.log(kolar)
 
             if (!user) {
-                return res.status(404).json({ error: "Please try to login with correct email" })
+                success=false
+                return res.status(404).json({success, error: "Please try to login with correct email" })
             }
 
             const passwordCompare = await bcrypt.compare(password, user.password);
             // console.log(passwordCompare)
             if (!passwordCompare) {
-                return res.status(404).json({ error: "Please enter the correct password" });
+                success=false
+                return res.status(404).json({success, error: "Please enter the correct password" });
 
             }
 
@@ -140,7 +145,9 @@ router.post('/login', [
             let userToken = jwt.sign(Udata, JWT_Secret);
             
             //    console.log(userToken)
-               res.json(userToken)
+
+            success=true
+               res.json({success, userToken})
             
 
 
