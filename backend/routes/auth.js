@@ -33,9 +33,12 @@ router.post('/createUser', [
 
         //find the validation errors in this request and wraps them in an object with handy functions
 
+        let success = false;
+
         const errors = validationResult(req);
+        success = false;
         if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
+            return res.status(400).json({success, errors: errors.array() });
         }
 
         let JWT_Secret = "kolar is vary bad boy"
@@ -54,7 +57,8 @@ router.post('/createUser', [
             // console.log(user) //just for checking is user exist in database or not
 
             if (user) {
-                return res.status(404).json({ error: "Sorry this email is already in use you can not use its" })
+                success = false;
+                return res.status(404).json({success, error: "Sorry this email is already in use you can not use its" })
             };
 
             user = await User.create({
@@ -70,10 +74,10 @@ router.post('/createUser', [
                     id: user.id
                 }
             }
-
+             success= true;
             let userToken = jwt.sign(Udata, JWT_Secret);
             // console.log(userToken)
-            res.json(userToken)
+            res.json({success,userToken})
 
             // .then(user => res.json(user))
             // .catch(err =>{console.log(err)

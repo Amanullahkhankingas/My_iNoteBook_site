@@ -53,7 +53,7 @@ const LogIn = () => {
             <div id="emailHelp" className="form-text">we will never share your email with anyone else.</div>
         </div>
         <div className='mb-3'>
-            <label htmlFor="password" className="form-label">Emaill address</label>
+            <label htmlFor="password" className="form-label">Password</label>
             <input type="password" className="form-control" id="password" name="password" onChange={handlechange} value={credentials.password} aria-describedby="emailhelp"/>
             
         </div>
