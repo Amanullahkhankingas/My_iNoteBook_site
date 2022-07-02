@@ -1,10 +1,11 @@
-import { useContext, useEffect,useRef ,useState} from 'react'
-// import { useContext, useEffect, useState } from 'react'
+// import { useContext, useEffect,useRef ,useState} from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Addnote from './Addnote';
 import noteContext from './context/notes/noteContext';
 import Noteitems from './Noteitems';
 
-const Notes = () => {
+const Notes = (props) => {
+         const {renderAlert} = props;
 
   const context = useContext(noteContext);
   const { notes, databasenotes, editNote } = context
@@ -19,13 +20,13 @@ const Notes = () => {
   // const [userUpdateNote,setUserUpdateNote]=useState({etitle:'',edescription:'',etag:''})
   const [userUpdateNote, setUserUpdateNote] = useState({title:"",description:"",tag:""})
 
-  const ref =useRef(null);
-  const refClose =useRef(null);
+  // const ref =useRef(null);
+  // const refClose =useRef(null);
 
   const updateNote = (currentNote) => {
     // setUserUpdateNote({eid:currentNote._id, etitle:currentNote.title, edescription:currentNote.description, etag:currentNote.tag})
     setUserUpdateNote({ id: currentNote._id, title: currentNote.title, description: currentNote.description, tag: currentNote.tag })
-    ref.current.click();
+    // ref.current.click();
     // console.log(currentNote + "updatenote fuction")
   }
   
@@ -36,13 +37,16 @@ const Notes = () => {
     // console.log(userUpdateNote)
   }
   
-  const handleclick = (e) => {
+  const handleClickUpdateNote = (e) => {
     e.preventDefault();
     editNote(userUpdateNote)
-    refClose.current.click();
+    // refClose.current.click();
     // editNote({id:userUpdateNote.id, title:userUpdateNote.title, description:userUpdateNote.description, tag:userUpdateNote.tag})
     // console.log(userUpdateNote._id, userUpdateNote.title, userUpdateNote.description, userUpdateNote.tag)
     // console.log(userUpdateNote.id)
+
+
+    props.renderAlert("success","Updated Note Successfully")
 
   };
   // lecture 66
@@ -89,7 +93,7 @@ const Notes = () => {
             <div className='modal-footer'>
               <button type='button' className='btn btn-secondary' data-bs-dismiss='modal'>Close</button> */}
       {/* <button type='button' className='btn btn-primary' onClick={handleclick} >UpdateNote</button> */}
-      <button type='button' disabled={userUpdateNote.title.length <3 || userUpdateNote.description.length <5}  className='btn btn-primary' onClick={handleclick} >UpdateNote</button>
+      <button type='button' disabled={userUpdateNote.title.length <3 || userUpdateNote.description.length <5}  className='btn btn-primary' onClick={handleClickUpdateNote} >UpdateNote</button>
       
       {/* </div>
           </div>
@@ -143,14 +147,14 @@ const Notes = () => {
       </div> */}
 
       {/* for lecture 66 */}
-      <Addnote />
+      <Addnote renderAlert={renderAlert}/>
       <div className='row my-3'>
         <h1>Your Notes</h1>
         <div className='container mx-2 my-3 text-danger'>
           {notes.length === 0 && 'You have Nathing'}
         </div>
         {notes.map((note) => {
-          return <Noteitems key={note._id} updateNote={updateNote} note={note} />
+          return <Noteitems key={note._id} updateNote={updateNote} note={note} renderAlert={renderAlert} />
         })}
       </div>
 

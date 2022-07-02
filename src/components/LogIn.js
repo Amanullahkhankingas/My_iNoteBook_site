@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 // import { useHistory } from 'react-router-dom'
-const LogIn = () => {
+const LogIn = (props) => {
 
   //  const history=useHistory();
     
@@ -28,9 +28,10 @@ const LogIn = () => {
       //save the authentication token and redirect
       localStorage.setItem('token',user.userToken)
       // history.push("/")
+      props.renderAlert("success","Loged In Successfully")
     }
     else{
-      alert("Wrong password or email")
+      props.renderAlert("danger","wrong details")
     }
 
 

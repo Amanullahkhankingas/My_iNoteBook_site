@@ -3,7 +3,8 @@ import Notes from './Notes'
 // import { useContext } from 'react'
 // import noteContext from './context/notes/noteContext';
 
-const Home = () => {
+const Home = (props) => {
+  const {renderAlert} = props;
   // const context = useContext(noteContext);
   // const {note,setNote} =context
 
@@ -36,7 +37,7 @@ const Home = () => {
           return note.title + " " + note.date + " ,"
         })}
       </div> */}
-      <Notes/>
+      <Notes renderAlert={renderAlert}/>
 
     </div>
   )
