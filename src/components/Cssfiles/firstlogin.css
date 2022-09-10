@@ -1,0 +1,77 @@
+body{
+    
+    background-color: brown;
+    animation: backgroundcolor 10s ease-in-out 0.01s infinite reverse backwards;
+    width: 100%;
+    
+    
+}
+
+h2{
+    /* animation: backgrounds linear infinite ; */
+    /* animation: backgrounds 2s linear 0.5 infinite  ; */
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    animation: backgrounds 10s ease-in-out 0.01s infinite reverse backwards;
+    
+    /* padding: 15px 0px; */
+}
+
+@keyframes backgrounds {
+    
+    0%{
+        /* background-color: black; */
+        color: blueviolet;
+        width: 100%;
+    }
+    50%{
+        /* background-color: blueviolet; */
+        color: white;
+        width: 50%;
+        /* border-radius: 30px; */
+        
+    padding: 5px 0px;
+    }
+    75%{
+        /* background-color: white; */
+        color: black;
+
+    }
+    100%{
+        /* background-color: brown; */
+        color: white;
+        width: 100%;
+    }
+
+}
+
+@keyframes backgroundcolor {
+    
+    0%{
+        background-color: black;
+        
+    }
+    50%{
+        background-color: blueviolet;
+        
+        
+  
+    }
+    75%{
+        background-color: white;
+       
+
+    }
+    100%{
+        background-color: brown;
+        
+    }
+
+}
+
+/* h2:hover{
+
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    
+} */

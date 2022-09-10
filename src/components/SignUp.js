@@ -1,9 +1,9 @@
 import React ,{useState} from 'react'
-// import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const SignUp = (props) => {
 
-  // const history= useHistory();
+  const navigate= useNavigate();
 
   const [createUserCredentials,setCreateUserCredentials] =useState({name:'',email:'',password:'',conformPassword:''})
   
@@ -30,7 +30,7 @@ const SignUp = (props) => {
   if(CreateUserResponse.success){
     //save the authentication token and redirect
     localStorage.setItem('token',CreateUserResponse.userToken)
-    // history.push("/")
+    navigate("/")
     props.renderAlert("success","Create your account Successfully")
   }
   else{
